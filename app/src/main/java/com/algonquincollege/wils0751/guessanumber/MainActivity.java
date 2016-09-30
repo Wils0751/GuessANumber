@@ -87,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                    if (userGuess > theNumber) {
+                    if (userGuess > theNumber && count <= 10) {
                         Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
 
 
                     }
-                    if (userGuess < theNumber) {
+                    if (userGuess < theNumber && count <= 10) {
                         Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
 
                     }
