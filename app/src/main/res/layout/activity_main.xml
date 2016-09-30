@@ -87,7 +87,8 @@
         android:gravity="center"
         android:layout_above="@+id/guessBtn"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="60dp" />
+        android:layout_marginBottom="60dp"
+/>
 
     <Button
         android:text="@string/guessbtn"

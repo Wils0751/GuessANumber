@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         GenerateRandomNumber();
         Button guessbtn = (Button) findViewById(R.id.guessBtn);
         Button resetbtn = (Button) findViewById(R.id.resetBtn);
-        //final TextView result  = (TextView) findViewById((R.id.result);
         Log.i("myInt", "the number is " + (theNumber));
 
 
@@ -55,43 +53,48 @@ public class MainActivity extends AppCompatActivity {
                 EditText Guess = (EditText) findViewById(R.id.userGuess);
 
                 String Guess1 = Guess.getText().toString();
-                int userGuess = Integer.parseInt(Guess1);
-
-
-                if (count > 10) {
-                    Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (userGuess > max || userGuess < min) {
-                    // Toast.makeText(getApplicationContext(), " Invalid Input, Must be between 1 and 1000", Toast.LENGTH_SHORT).show();
+                if(Guess1.isEmpty()){
                     Guess.setError("Enter a number between 1 and 1000");
                     Guess.requestFocus();
-
-                    return;
                 }
+                else {
+                    int userGuess = Integer.parseInt(Guess1);
 
-                if (userGuess == theNumber && count <= 5) {
-                    Toast.makeText(getApplicationContext(), "Superior win!", Toast.LENGTH_SHORT).show();
+                    if (count > 10) {
+                        Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (userGuess > max || userGuess < min) {
+                        Guess.setError("Enter a number between 1 and 1000");
+                        Guess.requestFocus();
 
-                    return;
+                        return;
+                    }
+
+                    if (userGuess == theNumber && count <= 5) {
+                        Toast.makeText(getApplicationContext(), "Superior win!", Toast.LENGTH_SHORT).show();
+
+                        return;
+                    }
+                    if (userGuess == theNumber && count <= 10 && !(count <= 5)) {
+                        Toast.makeText(getApplicationContext(), "Excellent Win!", Toast.LENGTH_SHORT).show();
+
+                        return;
+                    }
+
+                    if (userGuess > theNumber) {
+                        Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
+
+                        return;
+                    }
+                    if (userGuess < theNumber) {
+                        Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
+
+                        return;
+                    }
+
+
                 }
-                if (userGuess == theNumber && count <= 10 && !(count <= 5)) {
-                    Toast.makeText(getApplicationContext(), "Excellent Win!", Toast.LENGTH_SHORT).show();
-
-                    return;
-                }
-
-                if (userGuess > theNumber) {
-                    Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
-
-                    return;
-                }
-                if (userGuess < theNumber) {
-                    Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
-
-                    return;
-                }
-
             }
         });
         resetbtn.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     public void GenerateRandomNumber() {
 
         Random r = new Random();
-        theNumber = r.nextInt(max - min + 1) + min;
+        theNumber = r.nextInt(max - min) + min;
 
     }
 
