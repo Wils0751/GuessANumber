@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Guess A Number</string>
+    <string name="action_about">About</string>
+    <string name="author">Shannon Wilson(Wils0751)</string>
+    <string name="guess"> Enter Guess Here </string>
+    <string name="guesspls"> Guess a Number from 1-1000</string>
+    <string name="guessbtn">Guess?</string>
+    <string name="VS">VS</string>
+    <string name="resetbtn">Reset</string>
+    <string name="You">You</string>
+    <string name="Dory">Dory</string>
+    <string name="result">Your Result</string>
+</resources>
