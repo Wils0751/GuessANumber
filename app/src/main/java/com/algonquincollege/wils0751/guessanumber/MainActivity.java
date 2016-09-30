@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 //   result.setText("You have" + (10 - count) + "attempts");
                     if (count > 10) {
                         Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
+                        result.setText("You have 10 attempts");
 
 
                     }
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 count = 0;
                 Toast.makeText(getApplicationContext(), " Reset Game", Toast.LENGTH_SHORT).show();
                 Log.i("myInt", "the number is" + (theNumber));
+                result.setText("You have 10 attempts");
             }
         });
 
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("myInt", "the number is" + (theNumber));
                 Toast.makeText(getApplicationContext(), "Reset the game the number was: " + (theNumber), Toast.LENGTH_SHORT).show();
                 GenerateRandomNumber();
+                result.setText("You have 10 attempts");
                 return true;
             }
         });
