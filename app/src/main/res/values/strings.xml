@@ -9,5 +9,5 @@
     <string name="resetbtn">Reset</string>
     <string name="You">You</string>
     <string name="Dory">Dory</string>
-    <string name="result">Your Result</string>
+    <string name="result">You have 10 Attempts</string>
 </resources>

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         GenerateRandomNumber();
         Button guessbtn = (Button) findViewById(R.id.guessBtn);
         Button resetbtn = (Button) findViewById(R.id.resetBtn);
+        result = (TextView) findViewById(R.id.result);
         Log.i("myInt", "the number is " + (theNumber));
 
 
@@ -53,44 +56,45 @@ public class MainActivity extends AppCompatActivity {
                 EditText Guess = (EditText) findViewById(R.id.userGuess);
 
                 String Guess1 = Guess.getText().toString();
-                if(Guess1.isEmpty()){
+
+                result.setText("You have " + (10 - count) + " attempts");
+                //  result.setText();
+                if (Guess1.isEmpty()) {
                     Guess.setError("Enter a number between 1 and 1000");
                     Guess.requestFocus();
-                }
-                else {
-                    int userGuess = Integer.parseInt(Guess1);
+                } else {
 
+                    int userGuess = Integer.parseInt(Guess1);
+                    Guess.setText("");
+                //   result.setText("You have" + (10 - count) + "attempts");
                     if (count > 10) {
                         Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
-                        return;
+
+
                     }
-                    if (userGuess > max || userGuess < min) {
+                    if (userGuess > max && userGuess < min) {
                         Guess.setError("Enter a number between 1 and 1000");
                         Guess.requestFocus();
 
-                        return;
                     }
 
                     if (userGuess == theNumber && count <= 5) {
                         Toast.makeText(getApplicationContext(), "Superior win!", Toast.LENGTH_SHORT).show();
 
-                        return;
                     }
                     if (userGuess == theNumber && count <= 10 && !(count <= 5)) {
                         Toast.makeText(getApplicationContext(), "Excellent Win!", Toast.LENGTH_SHORT).show();
 
-                        return;
                     }
 
                     if (userGuess > theNumber) {
                         Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
 
-                        return;
+
                     }
                     if (userGuess < theNumber) {
                         Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
 
-                        return;
                     }
 
 
@@ -110,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         resetbtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-
+                Log.i("myInt", "the number is" + (theNumber));
                 Toast.makeText(getApplicationContext(), "Reset the game the number was: " + (theNumber), Toast.LENGTH_SHORT).show();
                 GenerateRandomNumber();
                 return true;
