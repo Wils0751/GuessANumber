@@ -66,10 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
                     int userGuess = Integer.parseInt(Guess1);
                     Guess.setText("");
-                //   result.setText("You have" + (10 - count) + "attempts");
                     if (count > 10) {
                         Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
-                        result.setText("You have 10 attempts");
+                        result.setText("You have 0 attempts");
 
 
                     }
