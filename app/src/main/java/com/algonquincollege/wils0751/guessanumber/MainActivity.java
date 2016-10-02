@@ -1,5 +1,5 @@
 /**
- * {This is a guessing game the game will generate a number between 1-1000 and a user must guess this number withing 10 trys.
+ * {This is a guessing game the game will generate a number between 1-1000 and a user must guess this number withing 10 guesses.
  * It will display to the user if the guess is too high or to low. It also will display your win and if you need to reset your game
  * or not. }
  *
@@ -58,42 +58,46 @@ public class MainActivity extends AppCompatActivity {
                 String Guess1 = Guess.getText().toString();
 
                 result.setText("You have " + (10 - count) + " attempts");
+                int userGuess;
+                userGuess = Integer.parseInt(Guess1);
                 //  result.setText();
                 if (Guess1.isEmpty()) {
                     Guess.setError("Enter a number between 1 and 1000");
                     Guess.requestFocus();
-                } else {
 
-                    int userGuess = Integer.parseInt(Guess1);
+                }
+                else {
+
                     Guess.setText("");
                     if (count > 10) {
                         Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
                         result.setText("You have 0 attempts");
 
                     }
-                    if (userGuess > max && userGuess < min) {
+                    if(userGuess > max || userGuess < min) {
                         Guess.setError("Enter a number between 1 and 1000");
                         Guess.requestFocus();
-
                     }
+                    if (userGuess == theNumber) {
+                        if (count <= 5) {
+                            Toast.makeText(getApplicationContext(), "Superior win!", Toast.LENGTH_SHORT).show();
 
-                    if (userGuess == theNumber && count <= 5) {
-                        Toast.makeText(getApplicationContext(), "Superior win!", Toast.LENGTH_SHORT).show();
+                        }
+                        if (count <= 10 && !(count <= 5)) {
+                            Toast.makeText(getApplicationContext(), "Excellent Win!", Toast.LENGTH_SHORT).show();
 
-                    }
-                    if (userGuess == theNumber && count <= 10 && !(count <= 5)) {
-                        Toast.makeText(getApplicationContext(), "Excellent Win!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
 
-                    }
-
-                    if (userGuess > theNumber && count <= 10) {
-                        Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
+                        if (userGuess > theNumber && count <= 10) {
+                            Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
 
 
-                    }
-                    if (userGuess < theNumber && count <= 10) {
-                        Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
+                        }
+                        if (userGuess < theNumber && count <= 10) {
+                            Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
 
+                        }
                     }
 
 
@@ -105,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 GenerateRandomNumber();
                 count = 0;
-                Toast.makeText(getApplicationContext(), "1Reset Game", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Reset Game", Toast.LENGTH_SHORT).show();
                 Log.i("myInt", "the number is" + (theNumber));
                 result.setText("You have 10 attempts");
             }
@@ -114,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         resetbtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getApplicationContext(), "Reset the game the number was: " + (theNumber), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "The number is: " + (theNumber), Toast.LENGTH_SHORT).show();
                 result.setText("You have 10 attempts");
                 return true;
             }
