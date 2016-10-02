@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
                 result.setText("You have " + (10 - count) + " attempts");
                 int userGuess;
-                userGuess = Integer.parseInt(Guess1);
+
                 //  result.setText();
                 if (Guess1.isEmpty()) {
                     Guess.setError("Enter a number between 1 and 1000");
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else {
-
+                    userGuess = Integer.parseInt(Guess1);
                     Guess.setText("");
                     if (count > 10) {
                         Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
