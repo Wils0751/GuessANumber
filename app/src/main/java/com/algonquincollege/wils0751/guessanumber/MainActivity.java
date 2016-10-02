@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Please reset ", Toast.LENGTH_SHORT).show();
                         result.setText("You have 0 attempts");
 
-
                     }
                     if (userGuess > max && userGuess < min) {
                         Guess.setError("Enter a number between 1 and 1000");
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 GenerateRandomNumber();
                 count = 0;
-                Toast.makeText(getApplicationContext(), " Reset Game", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "1Reset Game", Toast.LENGTH_SHORT).show();
                 Log.i("myInt", "the number is" + (theNumber));
                 result.setText("You have 10 attempts");
             }
@@ -115,9 +114,7 @@ public class MainActivity extends AppCompatActivity {
         resetbtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Log.i("myInt", "the number is" + (theNumber));
                 Toast.makeText(getApplicationContext(), "Reset the game the number was: " + (theNumber), Toast.LENGTH_SHORT).show();
-                GenerateRandomNumber();
                 result.setText("You have 10 attempts");
                 return true;
             }
