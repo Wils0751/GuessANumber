@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     Guess.setError("Enter a number between 1 and 1000");
                     Guess.requestFocus();
 
-                }
-                else {
+                } else {
                     userGuess = Integer.parseInt(Guess1);
                     Guess.setText("");
                     if (count > 10) {
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         result.setText("You have 0 attempts");
 
                     }
-                    if(userGuess > max || userGuess < min) {
+                    if (userGuess > max || userGuess < min) {
                         Guess.setError("Enter a number between 1 and 1000");
                         Guess.requestFocus();
                     }
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     } else {
-                        if (!(userGuess > max || userGuess < min || count > 10) ){
+                        if (!(userGuess > max || userGuess < min || count > 10)) {
                             if (userGuess > theNumber) {
                                 Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
 
