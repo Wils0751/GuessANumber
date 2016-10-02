@@ -88,15 +88,16 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     } else {
+                        if (!(userGuess > max || userGuess < min || count > 10) ){
+                            if (userGuess > theNumber) {
+                                Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
 
-                        if (userGuess > theNumber && count <= 10) {
-                            Toast.makeText(getApplicationContext(), "You guessed to high ", Toast.LENGTH_SHORT).show();
 
+                            }
+                            if (userGuess < theNumber) {
+                                Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (userGuess < theNumber && count <= 10) {
-                            Toast.makeText(getApplicationContext(), "You guessed to low ", Toast.LENGTH_SHORT).show();
-
+                            }
                         }
                     }
 
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Reset Game", Toast.LENGTH_SHORT).show();
                 Log.i("myInt", "the number is" + (theNumber));
                 result.setText("You have 10 attempts");
+
             }
         });
 
@@ -119,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 Toast.makeText(getApplicationContext(), "The number is: " + (theNumber), Toast.LENGTH_SHORT).show();
-                result.setText("You have 10 attempts");
                 return true;
             }
         });
